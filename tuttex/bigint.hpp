@@ -13,26 +13,28 @@
 #endif
 
 #ifndef INT64_MIN
-#define	INT64_MIN	(-0x7fffffffffffffffLL-1)
+#define INT64_MIN (-0x7fffffffffffffffLL - 1)
 #endif
 
 #ifndef INT64_MAX
-#define	INT64_MAX	0x7fffffffffffffffLL
+#define INT64_MAX 0x7fffffffffffffffLL
 #endif
 
 #ifndef INT32_C
 #define INT32_C(x) ((int32_t)x)
 #endif
 
-class bigint {
+class bigint
+{
 private:
   // Store integer in sign magnitude representation, using biguint.
-  // Note, zero is defined as non-negative sign with magnitude zero.  
+  // Note, zero is defined as non-negative sign with magnitude zero.
   // Having negative sign and zero magnitude is "not a number".
   biguint magnitude;
-  bool sign; // true = negative  
+  bool sign; // true = negative
 
   friend std::ostream &operator<<(std::ostream &, bigint const &);
+
 public:
   bigint(int32_t v);
   bigint(int64_t v);
@@ -115,7 +117,7 @@ public:
   bigint operator%(int32_t w) const;
   bigint operator%(uint32_t w) const;
 
-  void operator^=(uint32_t v);   
+  void operator^=(uint32_t v);
   bigint operator^(uint32_t v) const;
 
   /* =============================== */
